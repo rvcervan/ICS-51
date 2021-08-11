@@ -1,0 +1,53 @@
+# Raul Cervantes
+# RVCERVAN
+
+#int foo(int j, char k);
+#int bar(char i);
+
+#int fun(int[][] A, int x, int y, char value)
+#{
+#	return foo(value, A[x][y+1]) + bar(value);
+#)
+#r * num_cols + c
+fun:
+	#$a0, int [][] A
+	#$a1, int x
+	#$a2, int y
+	#$a3, char value
+	#number of columns = 10
+	
+	addi $sp, $sp, -12
+	sw $ra, 0($sp)
+	sw $s0, 4($sp)
+	sw $s1, 8($sp)
+	
+	move $s0, $a0 #contains $a0, int [][] A
+	
+	move $a0, $a3
+	jal bar
+	move $s1, $v0 #return of bar
+	
+	li $t0, 10 #num of columns
+	mul $t0, $a1, $t0 #r * num_cols
+	addi $t1, $a2, 1 #y+1
+	add $t0, $t0, $t1 # (r*num_cols) + y+1
+	sll $t0, $t0, 2 #because of int
+	add $t0, $s0, $t0 #address of A plus math
+	lw $t0, 0($t0)
+	
+	move $a0, $a3
+	add $a1, $t0
+	jal foo
+	
+	add $v0, $s1, $v0 #return foo(value, A[x][y+1]) + bar(value);
+	
+	lw $ra, 0($sp)
+	lw $s0, 4($sp)
+	lw $s1, 8($sp)
+	addi $sp, $sp, 12
+	
+	jr $ra
+	
+	 
+	
+	

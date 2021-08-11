@@ -1,0 +1,26 @@
+#.data 
+
+# Doc Example 1
+# centers = [(11,11), (7,1), (0,4)]
+#my_centers: .word 0x000B000B, 0x00070001, 0x00000004
+# point = [(10,0),(11,3),(8,11),(5,3),(12,7),(12,4),(10,0)]
+#my_points: .word 0x000A0000, 0x000B0003, 0x0008000B, 0x00050003, 0x000C0007, 0x000C0004, 0x000A0000
+#my_numPoints: .word 7
+#my_assignments: .byte 0,1,1,0,2,2,1
+
+# Doc Example 2
+# centers = [(5,5), (5,5), (5,5)]
+# my_centers: .word 0x00050005, 0x00050005, 0x00050005
+# point = [(5,6), (6,5), (4,5),(5,4)]
+# my_points: .word 0x00050006, 0x00060005, 0x00040005, 0x00050004
+# my_numPoints: .word 4
+# my_assignments: .byte 0,0,0,0
+
+
+# Doc Example 3
+# centers = [(392,486), (232,226), (131,41)]
+# my_centers: .word 0x018801E6, 0x00E800E2, 0x00830029
+# point = [(3,155), (134,62),  (24,218), (105,60), (143,55), (186,43), (133,14), (181,19), (38,191), (80,164), (240,214), (99,111)]
+# my_points: .word 0x0003009B, 0x0086003E, 0x001800DA, 0x0069003C, 0x008F0037, 0x00BA002B, 0x0085000E, 0x00B50013, 0x002600BF, 0x005000A4, 0x00F000D6, 0x0063006F
+# my_numPoints: .word 12
+# my_assignments: .byte 1, 2, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1

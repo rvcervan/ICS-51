@@ -1,0 +1,27 @@
+#Test file to test functions for seppuku 
+
+.include "hw4_rvcervan.asm"
+.include "hw4_helpers.asm"
+.include "hw4_ec_rvcervan.asm"
+
+.data
+filename: .asciiz "board2.txt"
+filewrite: .asciiz "savedBoard.txt"
+
+place: .asciiz "0H\n"
+.text
+.globl main
+main:
+
+	la $a0, filename
+	li $a1, 0xFCF0
+	jal readFile
+	
+	la $a0, place
+	li $a1, 0xFCF0
+	jal hint
+	
+	
+	
+	li $v0, 10
+	syscall

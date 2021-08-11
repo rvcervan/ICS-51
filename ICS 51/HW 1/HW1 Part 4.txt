@@ -1,0 +1,67 @@
+1. Consider the MIPS data declaration
+	str1: .ascii "A word is four bytes"
+	str2: .asciiz " and a byte is eight bits"
+	str3: .asciiz " in a 32-bit architecture"
+	
+	a. How many bytes does str1 use in memory?
+		20 bytes
+		
+	b. How many (memory) words does str2 use in memory?
+		6 memory words
+		
+	c. What string is printed when the following code is run?
+		
+		la $a0, str1
+		li $v0, 4
+		syscall
+		
+		output: A word is four bytes
+		
+	2. In Part 1 if the user's inputted string "Oh hello" was stored at the label InputString, what is
+		printed when the following code is run?
+		
+		la $a0, Char3
+		li $v0, 4
+		syscall
+		
+		you would get an error because syscall 4 is to print string not char, you need to do a 
+		syscall 11 to print char.
+		
+	3. In Part 1, if the user's inputted string "Computer" was stored at the starting address
+		InputString+2 instead of InputString.
+		
+		a. What label would the first letter of the user inputted string reside at?
+			Char3
+		
+		b. Which letter of the user inputted string would be accessible by the label Char1?
+		
+			none
+	
+	4. A student wrote the following MIPS code. They expected the ASCII character '1' to print. What 
+		does it print instead and why?
+		
+		it prints a non printable value called SOH on the ascii table.
+		The reason it prints this instead of '1' is because syscall 11 prints char as opposed 
+		syscall 1 which prints integer but ascii codes 00-31 and 127 are non printable so 
+		you will get a box instead if try to print.
+		
+	5. Given the value 0xFF82 in $t0
+		a. Which bitwise logical instruction should be used (andi, ori, xori) to modify the 
+			value to 0xFFA2? What is the 1 line of MIPS code to perform the operation.
+			ori.
+			li $t0, 0xFF82
+			ori $t1, $t0, 34
+			
+		b. Which bitwise logical instruction should be used (andi, ori, xori) to modify the 
+			value to 0x0002? What is the 1 line of MIPS code to perform the operation.
+			xori.
+			li $t0, 0xFF82
+			xori $t1, $t0, 0xFF80
+			
+	6. (Challenge) Using only load immediate, bitwise AND, and shift instructions, write a sequence
+		of instructions to determine if a balue is a multiple of 8?
+		
+		li $t0, your number
+		andi $t1, $t0, 7
+		beqz $t1, true
+		it is equal.

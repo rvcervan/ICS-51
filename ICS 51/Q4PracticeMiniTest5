@@ -1,0 +1,29 @@
+foo:
+	#$a0, int[] A
+	#$a1, char[] B
+	#$a2, int x
+	
+	addi $sp, $sp, -8
+	sw $ra, 0($sp)
+	sw $s0, 4($sp)
+	
+	move $s0, $a0
+	
+	li $t0, 4
+	mul $t0, $a2, $t0
+	add $t0, $a1, $t0
+	lw $t0, 0($t0)
+	move $a0, $t0
+	jal bar
+	
+	addi $t0, $a2, 3
+	sll $t0, $t0, 2
+	lw $t0, 0($s0)
+	
+	add $v0, $t0, $v0
+	
+	lw $ra, 0($sp)
+	lw $s0, 4($sp)
+	addi $sp, $sp, 8
+	
+	jr $ra
